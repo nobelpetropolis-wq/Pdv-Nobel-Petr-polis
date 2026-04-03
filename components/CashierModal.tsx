@@ -127,7 +127,7 @@ const CashierModal: React.FC<CashierModalProps> = ({ sales, onClose, onArchive }
               <tbody>
                 ${productSummary.map(item => `
                   <tr>
-                    <td>${item.isbn}</td>
+                    <td style="font-family: monospace;">${item.isbn}</td>
                     <td>${item.title}</td>
                     <td class="center"><strong>${item.quantity}</strong></td>
                     <td class="currency">R$ ${item.total.toFixed(2)}</td>
@@ -190,13 +190,15 @@ const CashierModal: React.FC<CashierModalProps> = ({ sales, onClose, onArchive }
   const generateCSVUrl = (): string | null => {
     try {
       const separator = ';'; // Ponto e vírgula para Excel PT-BR
-      const headers = ['ID Venda', 'Data', 'Hora', 'Vendedor', 'Cliente Nome', 'Cliente CPF', 'Cliente Telefone', 'Itens (Qtd x [ISBN] Título)', 'Qtde Itens', 'Forma Pagamento', 'Subtotal (R$)', 'Desconto (%)', 'Desconto (R$)', 'Total (R$)'];
+      const headers = ['ID Venda', 'Data', 'Hora', 'Vendedor', 'Cliente Nome', 'Cliente CPF', 'Cliente Telefone', 'Itens (Qtd x [ISBN] Título)', 'Qtde Itens', 'ISBNs (Somente)', 'Forma Pagamento', 'Subtotal (R$)', 'Desconto (%)', 'Desconto (R$)', 'Total (R$)'];
       
       const rows = sales.map(sale => {
         // Formata os itens para ficarem legíveis em uma célula, agora COM ISBN
         const itemsStr = sale.items
             .map(item => `${item.quantity}x [${item.isbn}] ${item.title}`)
             .join(' | ');
+
+        const isbnsOnly = sale.items.map(item => item.isbn).join(', ');
 
         const rowData = [
           sale.id.substring(0, 8),
@@ -208,6 +210,7 @@ const CashierModal: React.FC<CashierModalProps> = ({ sales, onClose, onArchive }
           sale.customerPhone || '',
           itemsStr,
           sale.items.reduce((sum, item) => sum + item.quantity, 0).toString(),
+          isbnsOnly,
           sale.paymentMethod,
           (sale.subtotal || sale.total).toFixed(2).replace('.', ','),
           (sale.discountPercentage || 0).toFixed(2).replace('.', ','),
