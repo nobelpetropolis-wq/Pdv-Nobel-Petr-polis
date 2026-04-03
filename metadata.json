@@ -1,0 +1,7 @@
+{
+  "name": "Livraria PDV (Eventos)",
+  "description": "App leve de PDV para captura de vendas em eventos externos, feiras e pop-up stores. Captura dados de cliente (CPF/Tel) e permite exportação consolidada para lançamento posterior no sistema fiscal.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

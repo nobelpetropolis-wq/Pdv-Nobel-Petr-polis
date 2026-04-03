@@ -1,0 +1,28 @@
+
+[
+  {
+    "isbn": "9788535914849",
+    "title": "Brasil, País do Futuro",
+    "price": 59.90
+  },
+  {
+    "isbn": "9788535902280",
+    "title": "O Jogador de Xadrez",
+    "price": 34.50
+  },
+  {
+    "isbn": "9788535909463",
+    "title": "Vinte e Quatro Horas na Vida de uma Mulher",
+    "price": 29.90
+  },
+  {
+    "isbn": "9788579803279",
+    "title": "A Menina que Roubava Livros",
+    "price": 54.90
+  },
+  {
+    "isbn": "9788580575439",
+    "title": "O Pequeno Príncipe",
+    "price": 39.99
+  }
+]

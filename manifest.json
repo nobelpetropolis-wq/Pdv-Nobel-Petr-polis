@@ -1,0 +1,17 @@
+{
+  "name": "Livraria PDV",
+  "short_name": "Livraria PDV",
+  "description": "Um aplicativo de ponto de venda (PDV) para livrarias que permite adicionar livros por ISBN, processar vendas com diferentes formas de pagamento e gerar relatórios de fechamento de caixa.",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}
