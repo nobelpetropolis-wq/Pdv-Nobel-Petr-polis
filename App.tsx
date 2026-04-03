@@ -802,27 +802,31 @@ const InnerApp: React.FC<{ currentEventId: string; onSwitchEvent: (id: string) =
             ) : (
               <div className="space-y-3">
                 {cart.map(item => (
-                  <div key={item.isbn} className={`p-4 rounded-lg flex items-center gap-4 bg-slate-800 border ${lastSaleId ? 'border-transparent' : 'border-slate-700'}`}>
+                  <div key={item.isbn} className={`p-3 sm:p-4 rounded-lg flex flex-col sm:flex-row sm:items-center gap-3 bg-slate-800 border ${lastSaleId ? 'border-transparent' : 'border-slate-700'}`}>
                     <div className="flex-grow min-w-0">
-                      <p className="font-semibold text-white truncate text-sm sm:text-base" title={item.title}>{item.title}</p>
-                      <p className="text-[10px] sm:text-xs text-slate-400 font-mono truncate">{item.isbn}</p>
+                      <p className="font-semibold text-white text-sm sm:text-base leading-tight" title={item.title}>{item.title}</p>
+                      <p className="text-[10px] text-slate-500 font-mono mt-1">{item.isbn}</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                       <input
-                            type="number"
-                            min="1"
-                            value={item.quantity}
-                            onChange={(e) => handleUpdateQuantity(item.isbn, parseInt(e.target.value) || 1)}
-                            className="w-16 bg-slate-900 border border-slate-700 rounded-md p-2 text-center text-white"
-                        />
-                        <span className="text-slate-400 text-sm">x R$ {item.price.toFixed(2)}</span>
+                    <div className="flex items-center justify-between sm:justify-end gap-3 border-t sm:border-t-0 border-slate-700/50 pt-2 sm:pt-0">
+                        <div className="flex items-center gap-2">
+                           <input
+                                type="number"
+                                min="1"
+                                value={item.quantity}
+                                onChange={(e) => handleUpdateQuantity(item.isbn, parseInt(e.target.value) || 1)}
+                                className="w-12 sm:w-16 bg-slate-900 border border-slate-700 rounded-md p-1.5 text-center text-white text-sm"
+                            />
+                            <span className="text-slate-500 text-xs sm:text-sm">x R$ {item.price.toFixed(2)}</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <p className="min-w-[70px] sm:min-w-[90px] text-right font-bold text-base sm:text-lg text-emerald-400 font-mono">
+                              R$ {(item.price * item.quantity).toFixed(2)}
+                            </p>
+                            <button onClick={() => handleRemoveFromCart(item.isbn)} className="text-slate-500 hover:text-red-400 transition-colors p-1" title="Remover item">
+                              <TrashIcon className="w-5 h-5" />
+                            </button>
+                        </div>
                     </div>
-                    <p className="w-20 sm:w-24 text-right font-semibold text-base sm:text-lg text-white font-mono flex-shrink-0">
-                      R$ {(item.price * item.quantity).toFixed(2)}
-                    </p>
-                    <button onClick={() => handleRemoveFromCart(item.isbn)} className="text-slate-500 hover:text-red-400 transition-colors p-2">
-                      <TrashIcon className="w-5 h-5" />
-                    </button>
                   </div>
                 ))}
               </div>
