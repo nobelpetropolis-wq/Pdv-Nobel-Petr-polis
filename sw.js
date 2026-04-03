@@ -1,4 +1,4 @@
-const CACHE_NAME = 'livraria-pdv-cache-v1';
+const CACHE_NAME = 'livraria-pdv-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',

@@ -794,18 +794,18 @@ const InnerApp: React.FC<{ currentEventId: string; onSwitchEvent: (id: string) =
 
           <div className="flex-grow overflow-y-auto pr-2">
             {cart.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full text-slate-600 text-center">
-                <BookIcon className="w-24 h-24 mb-4" />
-                <p className="text-xl font-semibold">Seu carrinho está vazio</p>
-                <p>Adicione livros usando o campo acima.</p>
+              <div className="flex flex-col items-center justify-center h-full text-slate-600 text-center p-6 bg-slate-800/30 rounded-xl border border-dashed border-slate-700">
+                <BookIcon className="w-20 h-20 mb-4 opacity-50" />
+                <p className="text-xl font-medium text-slate-400">O carrinho está vazio</p>
+                <p className="text-sm mt-1">Acrescente livros clicando no botão '+' no estoque ou usando a busca acima.</p>
               </div>
             ) : (
               <div className="space-y-3">
                 {cart.map(item => (
                   <div key={item.isbn} className={`p-3 sm:p-4 rounded-lg flex flex-col sm:flex-row sm:items-center gap-3 bg-slate-800 border ${lastSaleId ? 'border-transparent' : 'border-slate-700'}`}>
-                    <div className="flex-grow min-w-0">
-                      <p className="font-semibold text-white text-sm sm:text-base leading-tight" title={item.title}>{item.title}</p>
-                      <p className="text-[10px] text-slate-500 font-mono mt-1">{item.isbn}</p>
+                    <div className="flex-grow min-w-0 pr-2">
+                      <p className="font-semibold text-white text-base sm:text-lg leading-snug break-words" title={item.title}>{item.title}</p>
+                      <p className="text-xs text-slate-500 font-mono mt-1">ISBN: {item.isbn}</p>
                     </div>
                     <div className="flex items-center justify-between sm:justify-end gap-3 border-t sm:border-t-0 border-slate-700/50 pt-2 sm:pt-0">
                         <div className="flex items-center gap-2">
@@ -839,7 +839,7 @@ const InnerApp: React.FC<{ currentEventId: string; onSwitchEvent: (id: string) =
            
            {/* Fixed Header */}
            <div className="p-4 border-b border-slate-700 flex-shrink-0">
-             <h2 className="text-2xl font-bold text-white">Pagamento</h2>
+              <h2 className="text-2xl font-bold text-white tracking-tight">Finalizar Pagamento</h2>
            </div>
            
            {/* Scrollable Middle Content */}
